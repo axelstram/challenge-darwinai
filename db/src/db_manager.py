@@ -7,14 +7,15 @@ from ..models.expenses import Expense
 
 class DatabaseManager:
     def __init__(self, database=None, host=None, port=None, user=None, password=None):
-        load_dotenv()
+        if os.environ.get('ENV') != 'PRODUCTION':
+            load_dotenv()
 
         self.conn = psycopg2.connect(
-            host = host or os.getenv('DB_HOST'),
-            port = port or os.getenv('DB_PORT'),
-            user = user or os.getenv('DB_USER'),
-            password = password or os.getenv('DB_PASSWORD'),
-            database = database or os.getenv('DB_DATABASE')
+            host = host or os.environ.get('DB_HOST'),
+            port = port or os.environ.get('DB_PORT'),
+            user = user or os.environ.get('DB_USER'),
+            password = password or os.environ.get('DB_PASSWORD'),
+            database = database or os.environ.get('DB_DATABASE')
         )
         self.conn.autocommit = True
         self.cursor = self.conn.cursor()
@@ -28,7 +29,7 @@ class DatabaseManager:
             CREATE TABLE IF NOT EXISTS users (
             "id" SERIAL PRIMARY KEY,
             "telegram_id" TEXT UNIQUE NOT NULL
-            );''';
+            );'''
 
         expenses_table_sql = '''
             CREATE TABLE IF NOT EXISTS expenses (
@@ -38,7 +39,7 @@ class DatabaseManager:
                 "amount" MONEY NOT NULL,
                 "category" TEXT NOT NULL,
                 "added_at" TIMESTAMP NOT NULL
-            );''';
+            );'''
 
         self.execute_query(users_table_sql)
         self.execute_query(expenses_table_sql)
