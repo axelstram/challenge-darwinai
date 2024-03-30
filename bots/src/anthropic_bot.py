@@ -12,7 +12,7 @@ class AnthropicBot(Bot):
         self.llm = ChatAnthropic(temperature=0, model_name="claude-3-opus-20240229", anthropic_api_key=api_key or os.environ.get('ANTHROPIC_API_KEY'))
         self.input = """You classify inputs into the following categories: Housing, Transportation, Food, Utilities, Insurance, Medical/Healthcare, Savings, 
                         Debt, Education, Entertainment, and Other. If the message isn't related to expenses at all, the category is None. If the category isn't None, 
-                        your answer should always contain the category, how much it costed and a description with just the item name. If it doesn't fit any category, 
+                        your answer should always contain the category, the amount and a description with just the item name. If it doesn't fit any category, 
                         just respond with category: 'None'. Your response should always be in english. The text to analyze is the following: """
 
     

@@ -9,5 +9,5 @@ def test_that_when_anthropic_bot_is_created_it_classifies_the_message_correctly(
     result = bot.process_message(message)
 
     assert result['Category'] == 'Food'
-    assert result['Cost'] == '$20'
+    assert result['Amount'] == '$20'
     assert result['Description'] == 'Pizza'
