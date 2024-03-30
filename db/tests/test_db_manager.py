@@ -48,22 +48,14 @@ def test_that_user_is_correctly_added_to_the_users_table():
 
     user1 = User(123)
     user2 = User(456)
-
+    user3 = User(999)
+    
     db.insert_user(user1)
     db.insert_user(user2)
 
-    query = """SELECT * FROM users;"""
-
-    result = db.execute_query(query)
-
-    ids = set()
-
-    for item in result:
-        ids.add(item[1])
-
-    assert "123" in ids
-    assert "456" in ids
-    assert len(ids) == 2
+    assert db.user_is_present(user1)
+    assert db.user_is_present(user2)
+    assert not db.user_is_present(user3)
 
     db.delete_tables()
 

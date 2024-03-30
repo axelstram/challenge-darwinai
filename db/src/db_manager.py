@@ -77,14 +77,17 @@ class DatabaseManager:
 
 
     def insert_user(self, user):
-        try:
-            query = "INSERT INTO users (telegram_id) VALUES ({0})".format(user.get_telegram_id())
-            self.cursor.execute(query)
-            return True
-        except Exception as e:
-            print(f"Error adding user: {e}")
-            return False
+        query = "INSERT INTO users (telegram_id) VALUES ({0}) ON CONFLICT DO NOTHING".format(user.get_telegram_id())
 
+        return self.execute_query(query)
+
+    def user_is_present(self, user):
+        query = """SELECT id FROM users
+                        WHERE telegram_id = '{0}';""".format(user.telegram_id)
+
+        result = self.execute_query(query)
+
+        return len(result) == 1
 
     def insert_expenses(self, expenses):
         try:
