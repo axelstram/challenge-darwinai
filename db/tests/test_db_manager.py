@@ -1,8 +1,6 @@
 from ..src.db_manager import DatabaseManager
 from ..models.user import User
 from ..models.expenses import Expense
-import pytest
-import psycopg2
 
 
 def value_is_present_in_query_result(value, l):
