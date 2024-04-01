@@ -51,9 +51,9 @@ def test_that_user_is_correctly_added_to_the_users_table():
     db.insert_user(user1)
     db.insert_user(user2)
 
-    assert db.user_is_present(user1)
-    assert db.user_is_present(user2)
-    assert not db.user_is_present(user3)
+    assert db.user_is_whitelisted(user1)
+    assert db.user_is_whitelisted(user2)
+    assert not db.user_is_whitelisted(user3)
 
     db.delete_tables()
 

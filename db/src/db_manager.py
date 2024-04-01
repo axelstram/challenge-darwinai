@@ -81,7 +81,7 @@ class DatabaseManager:
 
         return self.execute_query(query)
 
-    def user_is_present(self, user):
+    def user_is_whitelisted(self, user):
         query = """SELECT id FROM users
                         WHERE telegram_id = '{0}';""".format(user.telegram_id)
 
