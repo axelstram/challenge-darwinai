@@ -87,7 +87,10 @@ class DatabaseManager:
 
         result = self.execute_query(query)
 
-        return len(result) == 1
+        if result:
+            return len(result) == 1
+        else:
+            return False
 
     def insert_expenses(self, expenses):
         try:
