@@ -20,6 +20,8 @@ class DatabaseManager:
         self.conn.autocommit = True
         self.cursor = self.conn.cursor()
 
+        self.create_tables()
+
     def __exit__(self):
         self.close_connection()
 
