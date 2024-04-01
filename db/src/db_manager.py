@@ -92,17 +92,17 @@ class DatabaseManager:
         else:
             return False
 
-    def insert_expenses(self, expenses):
+    def insert_expense(self, expense):
         try:
             query = """SELECT id FROM users
-                        WHERE telegram_id = '{0}';""".format(expenses.user_telegram_id)
+                        WHERE telegram_id = '{0}';""".format(expense.user_telegram_id)
 
             result = self.execute_query(query)
 
             id = result[0][0]
 
             query = """INSERT INTO expenses (user_id, description, amount, category, added_at) 
-                        VALUES (%i, '%s', %i, '%s', '%s')""" % (id, expenses.description, expenses.amount, expenses.category, expenses.added_at)
+                        VALUES (%i, '%s', %i, '%s', '%s')""" % (id, expense.description, expense.amount, expense.category, expense.added_at)
 
             self.execute_query(query)
             

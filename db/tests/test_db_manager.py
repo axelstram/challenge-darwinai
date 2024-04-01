@@ -69,8 +69,8 @@ def test_that_expenses_are_correctly_inserted_for_a_user():
 
     expense1 = Expense(user_telegram_id=user.get_telegram_id(), description="burguer", amount=20, category="Food")
     expense2 = Expense(user_telegram_id=user.get_telegram_id(), description="notebook", amount=13230, category="Utilities")
-    db.insert_expenses(expense1)
-    db.insert_expenses(expense2)
+    db.insert_expense(expense1)
+    db.insert_expense(expense2)
 
 
     expenses = db.get_expenses_from_user(user)
@@ -90,6 +90,6 @@ def test_that_when_an_expense_is_added_for_a_non_existent_user_then_it_fails():
 
     expense = Expense(user_telegram_id=444, description="burguer", amount=20, category="Food")
     
-    assert db.insert_expenses(expense) == False
+    assert db.insert_expense(expense) == False
 
     db.delete_tables()
