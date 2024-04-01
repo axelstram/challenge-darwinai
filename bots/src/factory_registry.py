@@ -15,3 +15,6 @@ class BotFactoryRegistry:
         if factory is None:
             raise ValueError(f'Unsupported bot type: {bot_type}')
         return factory
+
+    def list_factories(self):
+        return list(self.factories.keys())
