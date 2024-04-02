@@ -1,6 +1,5 @@
 from bot_service.src.bot_service import BotService
 from fastapi import FastAPI, HTTPException, status
-import uvicorn
 
 app = FastAPI()
 bot_service = BotService()
