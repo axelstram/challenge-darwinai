@@ -136,7 +136,7 @@ class DatabaseManager:
                     d['Description'] = elem[2]
                     d['Amount'] = elem[3]
                     d['Category'] = elem[4]
-                    d['Date'] = elem[5]
+                    d['Date'] = elem[5].strftime('%Y-%m-%d')
                     expenses.append(d)
 
             return expenses
