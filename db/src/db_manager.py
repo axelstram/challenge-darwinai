@@ -85,7 +85,7 @@ class DatabaseManager:
 
     def user_is_whitelisted(self, user):
         query = """SELECT id FROM users
-                        WHERE telegram_id = '{0}';""".format(user.telegram_id)
+                        WHERE telegram_id = '{0}';""".format(user.get_telegram_id())
 
         result = self.execute_query(query)
 
@@ -104,7 +104,7 @@ class DatabaseManager:
             id = result[0][0]
 
             query = """INSERT INTO expenses (user_id, description, amount, category, added_at) 
-                        VALUES (%i, '%s', %i, '%s', '%s')""" % (id, expense.description, expense.amount, expense.category, expense.added_at)
+                        VALUES (%i, '%s', %i, '%s', '%s')""" % (int(id), expense.description, float(expense.amount), expense.category, expense.added_at)
 
             self.execute_query(query)
             
@@ -116,7 +116,7 @@ class DatabaseManager:
     def get_expenses_from_user(self, user):
         try:
             query = """SELECT id FROM users
-                        WHERE telegram_id = '{0}';""".format(user.telegram_id)
+                        WHERE telegram_id = '{0}';""".format(user.get_telegram_id())
 
             result = self.execute_query(query)
 
