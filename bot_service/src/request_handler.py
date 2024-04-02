@@ -1,5 +1,6 @@
 from bot_service.src.bot_service import BotService
 from fastapi import FastAPI, HTTPException, status
+import uvicorn
 
 app = FastAPI()
 bot_service = BotService()
@@ -58,3 +59,8 @@ async def list_user_expenses(user_id):
         return {f'user {user_id} expenses are: {expenses}'}
     else:
         return {f'user {user_id} has no expenses'}
+
+
+
+if __name__ == "__main__":
+    uvicorn.run(app, host='0.0.0.0', port=8000)
