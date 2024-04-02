@@ -3,9 +3,6 @@ from ..models.user import User
 from ..models.expenses import Expense
 
 
-def value_is_present_in_query_result(value, l):
-    return len(list(filter(lambda x: x.count(value) > 0, l))) == 1
-
 
 def test_that_when_db_is_created_the_two_tables_exist():
     db = DatabaseManager()
@@ -76,8 +73,9 @@ def test_that_expenses_are_correctly_inserted_for_a_user():
     expenses = db.get_expenses_from_user(user)
 
     assert len(expenses) == 2
-    assert value_is_present_in_query_result('notebook', expenses)
-    assert value_is_present_in_query_result('burguer', expenses)
+    assert expenses[0]['Description'] == 'burguer'
+    assert expenses[1]['Description'] == 'notebook'
+    
 
     db.delete_tables()
 

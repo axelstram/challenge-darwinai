@@ -114,6 +114,8 @@ class DatabaseManager:
             return False
 
     def get_expenses_from_user(self, user):
+        expenses = []
+
         try:
             query = """SELECT id FROM users
                         WHERE telegram_id = '{0}';""".format(user.get_telegram_id())
@@ -127,9 +129,19 @@ class DatabaseManager:
 
             result = self.execute_query(query)
             
-            return result
+
+            if result:
+                for elem in result:
+                    d = {}
+                    d['Description'] = elem[2]
+                    d['Amount'] = elem[3]
+                    d['Category'] = elem[4]
+                    d['Date'] = elem[5]
+                    expenses.append(d)
+
+            return expenses
             
         except Exception as e:
             print(f"Error getting expenses from user: {e}")
-            return False
+            return expenses
 
