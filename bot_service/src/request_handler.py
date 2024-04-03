@@ -66,3 +66,6 @@ async def list_user_expenses(user_id):
     else:
         return {f'user {user_id} has no expenses'}
 
+@app.get('/list_available_bots')
+async def list_available_bots():
+    return f'The available bots are {bot_service.list_available_bots()}'
