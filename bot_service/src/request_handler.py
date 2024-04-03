@@ -29,7 +29,7 @@ async def whitelist_user(user_id):
     else:
         return {response}
 
-@app.get('is_whitelisted')
+@app.get('/is_whitelisted')
 async def is_whitelisted(user_id):
     if bot_service.is_whitelisted(user_id):
         return {f' user_id {user_id} is whitelisted: True'}
