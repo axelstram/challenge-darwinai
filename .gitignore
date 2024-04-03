@@ -1,5 +1,8 @@
 .env
+**/env
 __pycache__/
 *.pyc
 *.pyo
 .vercel
+node_modules
+README.Docker.md
