@@ -61,11 +61,8 @@ async def list_user_expenses(user_id):
 
     expenses = bot_service.list_user_expenses(user_id)
 
-    if len(expenses) > 0:
-        return {f'user {user_id} expenses are: {expenses}'}
-    else:
-        return {f'user {user_id} has no expenses'}
-
+    return {'expenses': expenses}
+    
 @app.get('/list_available_bots')
 async def list_available_bots():
-    return f'The available bots are {bot_service.list_available_bots()}'
+    return {'bots': f'{bot_service.list_available_bots()}'}
