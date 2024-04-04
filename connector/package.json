@@ -9,12 +9,9 @@
     "node-telegram-bot-api": "0.65.1"
   },
   "scripts": {
-    "start": "node api/index.js",
+    "start": "node keep-alive.js & node src/connector.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "ngrok": "^5.0.0-beta.2"
-  }
+  "license": "ISC"
 }
