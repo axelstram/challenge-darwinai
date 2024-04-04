@@ -110,6 +110,7 @@ bot.on('message', async (msg) => {
 });
 
 
+//Back4app requires that my app listens to a port, but that's not required for the telegram bot. So I listen on port 80 and do nothing.
 
 const http = require('http');
 const PORT = process.env.PORT || 80;
