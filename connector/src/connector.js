@@ -49,7 +49,6 @@ module.exports = async (request, response) => {
         const bot = new TelegramBot(token);
         const { body } = request;
 
-        // Ensure that this is a message being sent
         if (body.message) {
             // Retrieve the ID for this chat
             // and the text that the user sent
