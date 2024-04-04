@@ -45,6 +45,15 @@ Database
   * * DB_DATABASE='postgres'
   * * ANTHROPIC_API_KEY=<your_api_key>
 
-* To test the bot, talk to **@challenge_darwinai_axel_prod_bot** on Telegram and type **/help** for instructions.
+* To test the bot service locally, in addition to setting all the previous variables and starting up the DB, start a uvicorn server from the root directory with the following command: ```uvicorn bot_service.src.request_handler:app --reload --port 5000```. Then, test some endpoints using Postman, e.g:
 
+* * POST: ```http://127.0.0.1:5000/set_bot?bot_type=anthropic```
+  * POST: ```https://127.0.0.1:5000/whitelist_user?user_id=<id>```
+  * POST: ```http://127.0.0.1:5000/process_message?user_id=<id>&message="computer 1500 bucks"```
+  * GET: ```http://127.0.0.1:5000/list_user_expenses?user_id=<id>```
 
+* To test the bot in production, talk to **@challenge_darwinai_axel_prod_bot** on Telegram and type **/help** for instructions.
+
+## Services used
+
+* Both the connector and the bot service are hosted in Back4App, and the Postgre DB is hosted on Supabase.
