@@ -21,4 +21,9 @@ class AnthropicBot(Bot):
         chain = prompt | self.llm
         res = chain.invoke(message).content
 
-        return dict(e.split(': ') for e in res.split('\n'))
+        d = dict(e.split(': ') for e in res.split('\n'))
+        d2 = {}
+        for k,v in d.items():
+            d2[k.capitalize()] = v
+
+        return d2
