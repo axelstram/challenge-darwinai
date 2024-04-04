@@ -39,7 +39,7 @@ USER node
 COPY . .
 
 # Expose the port that the application listens on.
-EXPOSE 8443
+#EXPOSE 8443
 
 # Run the application.
 CMD npm start
