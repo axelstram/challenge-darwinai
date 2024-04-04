@@ -1,8 +1,4 @@
-const express = require('express')
-const expressApp = express()
 const axios = require("axios");
-expressApp.use(express.static('static'))
-expressApp.use(express.json());
 require('dotenv').config();
 
 const TelegramBot = require('node-telegram-bot-api');
