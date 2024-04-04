@@ -74,7 +74,14 @@ bot.on('message', async (msg) => {
 
         //List all commands
         case '/help':
-            bot.sendMessage(chatId, 'help');
+            help_msg = `
+                1) If not already whitelisted, type \\whitelitst to whitelist your user
+                2) Type a message with your expenses (e.g. "pizza 20 bucks")
+                3) Use the command \\expenses to list all your expenses
+
+                For a list of all available bots, type \\bots
+            `;
+            bot.sendMessage(chatId, help_msg);
             break;
         
         //List all available bots
