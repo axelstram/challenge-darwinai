@@ -14,7 +14,11 @@ FROM node:${NODE_VERSION}-alpine
 ENV NODE_ENV production
 
 
-WORKDIR /usr/src/app
+#WORKDIR /usr/src/app
+WORKDIR  /usr/app
+COPY     package.json /usr/app/package.json
+RUN      npm install
+
 
 # Download dependencies as a separate step to take advantage of Docker's caching.
 # Leverage a cache mount to /root/.npm to speed up subsequent builds.
@@ -24,9 +28,9 @@ RUN --mount=type=bind,source=package.json,target=package.json \
     --mount=type=bind,source=package-lock.json,target=package-lock.json \
     --mount=type=cache,target=/root/.npm \
     npm ci --omit=dev
-RUN npm install dotenv
-RUN npm install axios
-RUN npm install node-telegram-bot-api
+
+# install node modules
+
 
 # Run the application as a non-root user.
 USER node
