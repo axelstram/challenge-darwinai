@@ -1,11 +1,11 @@
-const https = require('https');
+const http = require('http');
 
-const TARGET_URL = 'https://connector-ubxv3t5y.b4a.run/';
+const TARGET_URL = 'http://connector-ubxv3t5y.b4a.run/';
 const PORT = process.env.PORT || 80;
 const INTERVAL = 5 * 60 * 1000; // 5 minutes in milliseconds
 
 function keepAlive() {
-  https.get(`${TARGET_URL}:${PORT}`  , () => {
+  http.get(`${TARGET_URL}:${PORT}`  , () => {
     console.log('keep alive');
   });
 }
