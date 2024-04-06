@@ -93,7 +93,7 @@ bot.on('message', async (msg) => {
         //If there are additional bots in the future, a '/set_bot' command would allow the user to select it's desired bot
         //case '/set_bot':
         //  break;
-
+gc
 
         //expense related message
         default:
