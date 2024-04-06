@@ -75,7 +75,7 @@ bot.on('message', async (msg) => {
         //List all commands
         case '/help':
             help_msg = 
-                '1) If not already whitelisted, type /whitelitst to whitelist your user \n'+
+                '1) If not already whitelisted, type /whitelist to whitelist your user \n'+
                 '2) Type a message with your expenses (e.g. "pizza 20 bucks") \n'+
                 '3) Use the command /expenses to list all your expenses \n'+
 
