@@ -56,4 +56,4 @@ Database
 
 ## Services used
 
-* Both the connector and the bot service are hosted in Back4App, and the Postgre DB is hosted on Supabase.
+* Both the connector and the bot service are hosted in Render, and the Postgre DB is hosted on Supabase.
