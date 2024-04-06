@@ -14,9 +14,8 @@ FROM node:${NODE_VERSION}-alpine
 ENV NODE_ENV production
 
 
-#WORKDIR /usr/src/app
-WORKDIR  /usr/app
-COPY     package.json /usr/app/package.json
+WORKDIR /usr/src/app
+COPY     package.json /usr/src/app/package.json
 RUN      npm install
 
 
