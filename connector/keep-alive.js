@@ -1,8 +1,8 @@
 const http = require('http');
 
-const TARGET_URL1 = 'http://connector-ubxv3t5y.b4a.run/';
-const TARGET_URL2 = 'http://darwinai-n3s5o067.b4a.run/';
-const PORT1 = process.env.PORT || 80;
+const TARGET_URL1 = 'https://connector-1dmd.onrender.com/';
+const TARGET_URL2 = 'https://bot-service-rwju.onrender.com/';
+const PORT1 = process.env.PORT || 10000;
 const PORT2 = process.env.PORT || 8000;
 const INTERVAL = 5 * 60 * 1000; // 5 minutes in milliseconds
 
